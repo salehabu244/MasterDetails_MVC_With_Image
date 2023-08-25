@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MasterDetails.Models.Spot>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="display-4 alert alert-info">Spot List</h2>
+
+<p class="d-flex justify-content-end">
+    <a href="@Url.Action("Create", "Spots")" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New</a>
+</p>
+<table class="table table-bordered table-striped table-sm">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SpotName)
+        </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpotName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SpotId }, new {@class="btn btn-success btn-sm"}) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.SpotId }, new { @class = "btn btn-danger btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>
